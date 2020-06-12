@@ -61,6 +61,16 @@ public class Zoo extends Auditable
         this.zooname = zooname;
     }
 
+    public List<Telephone> getTelephones()
+    {
+        return telephones;
+    }
+
+    public void setTelephones(List<Telephone> telephones)
+    {
+        this.telephones = telephones;
+    }
+
     public List<ZooAnimals> getAnimals()
     {
         return animals;
@@ -69,5 +79,9 @@ public class Zoo extends Auditable
     public void setAnimals(List<ZooAnimals> animals)
     {
         this.animals = animals;
+    }
+
+    public void addAnimal(Animal animal) {
+        animals.add(new ZooAnimals(this, animal));
     }
 }
