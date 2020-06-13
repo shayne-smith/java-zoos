@@ -46,14 +46,18 @@ public class ZooServiceImpl implements ZooService
     {
         Zoo newZoo = new Zoo();
 
-        if (zoo.getZooid() != 0) {
+        if (zoo.getZooid() != 0)
+        {
             Zoo oldZoo = zoorepos.findById(zoo.getZooid())
                 .orElseThrow(() -> new EntityNotFoundException("Zoo id " + zoo.getZooid() + " not found!"));
 
             // delete animals for the old zoo
             for (ZooAnimals za : oldZoo.getAnimals())
             {
-                deleteZooAnimal(za.getZoo().getZooid(), za.getAnimal().getAnimalid());
+                deleteZooAnimal(za.getZoo()
+                        .getZooid(),
+                    za.getAnimal()
+                        .getAnimalid());
             }
             newZoo.setZooid(zoo.getZooid());
         }
@@ -61,7 +65,8 @@ public class ZooServiceImpl implements ZooService
         newZoo.setZooname(zoo.getZooname()
             .toLowerCase());
 
-        newZoo.getAnimals().clear();
+        newZoo.getAnimals()
+            .clear();
         if (zoo.getZooid() == 0)
         {
             for (ZooAnimals za : zoo.getAnimals())
@@ -75,14 +80,21 @@ public class ZooServiceImpl implements ZooService
         {
             for (ZooAnimals za : zoo.getAnimals())
             {
-                addZooAnimal(za.getZoo().getZooid(), za.getAnimal().getAnimalid());
+                addZooAnimal(za.getZoo()
+                        .getZooid(),
+                    za.getAnimal()
+                        .getAnimalid());
             }
         }
 
-        newZoo.getTelephones().clear();
-        for (Telephone t : zoo.getTelephones()) {
+        newZoo.getTelephones()
+            .clear();
+        for (Telephone t : zoo.getTelephones())
+        {
             newZoo.getTelephones()
-                .add(new Telephone(t.getPhonetype(), t.getPhonenumber(), newZoo));
+                .add(new Telephone(t.getPhonetype(),
+                    t.getPhonenumber(),
+                    newZoo));
         }
 
         return null;

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,16 +24,22 @@ public class ZooController
 
     @GetMapping(value = "/zoos",
         produces = {"application/json"})
-    public ResponseEntity<?> listAllZoos(){
+    public ResponseEntity<?> listAllZoos()
+    {
         List<Zoo> myZoos = zooService.findAll();
-        return new ResponseEntity<>(myZoos, HttpStatus.OK);
+        return new ResponseEntity<>(myZoos,
+            HttpStatus.OK);
     }
 
     @GetMapping(value = "/zoo/{zooId}",
         produces = {"application/json"})
-    public ResponseEntity<?> getZooById(@PathVariable long zooId){
+    public ResponseEntity<?> getZooById(
+        @PathVariable
+            long zooId)
+    {
         Zoo z = zooService.findZooById(zooId);
-        return new ResponseEntity<>(z, HttpStatus.OK);
+        return new ResponseEntity<>(z,
+            HttpStatus.OK);
     }
 
     @PostMapping(value = "/zoo",

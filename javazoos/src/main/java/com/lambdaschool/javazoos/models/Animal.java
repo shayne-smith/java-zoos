@@ -20,7 +20,8 @@ public class Animal
     private String animaltype;
 
 
-    @OneToMany(mappedBy = "animals", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "animal",
+        cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "animals")
     private List<ZooAnimals> zoos = new ArrayList<>();
 

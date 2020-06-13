@@ -1,7 +1,6 @@
 package com.lambdaschool.javazoos.models;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name =  "zoos")
+@Table(name = "zoos")
 public class Zoo extends Auditable
 {
 
@@ -81,7 +80,9 @@ public class Zoo extends Auditable
         this.animals = animals;
     }
 
-    public void addAnimal(Animal animal) {
-        animals.add(new ZooAnimals(this, animal));
+    public void addAnimal(Animal animal)
+    {
+        animals.add(new ZooAnimals(this,
+            animal));
     }
 }
