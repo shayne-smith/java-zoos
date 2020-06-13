@@ -1,5 +1,6 @@
 package com.lambdaschool.javazoos.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -8,15 +9,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "animals")
-public class Animal
+public class Animal extends Auditable
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long animalid;
 
-    @Column(nullable = false,
-        unique = true)
+    @Column(nullable = false)
     private String animaltype;
 
 

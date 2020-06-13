@@ -27,8 +27,7 @@ public class ZooController
     public ResponseEntity<?> listAllZoos()
     {
         List<Zoo> myZoos = zooService.findAll();
-        return new ResponseEntity<>(myZoos,
-            HttpStatus.OK);
+        return new ResponseEntity<>(myZoos, HttpStatus.OK);
     }
 
     @GetMapping(value = "/zoo/{zooId}",

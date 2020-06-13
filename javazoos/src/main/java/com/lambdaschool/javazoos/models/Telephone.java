@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "telephones")
-public class Telephone
+public class Telephone extends Auditable
 {
 
     @Id
@@ -22,8 +22,7 @@ public class Telephone
     @ManyToOne
     @JoinColumn(name = "zooid",
         nullable = false)
-    @JsonIgnoreProperties(value = "telephones",
-        allowSetters = true)
+    @JsonIgnoreProperties(value = "telephones")
     private Zoo zoo;
 
     public Telephone()

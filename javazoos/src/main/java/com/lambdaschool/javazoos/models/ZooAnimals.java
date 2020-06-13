@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "zooanimals",
@@ -57,12 +58,22 @@ public class ZooAnimals extends Auditable implements Serializable
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        return Objects.hash(zoo, animal);
     }
 
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(Object o)
     {
-        return super.equals(obj);
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        ZooAnimals zooAnimals = (ZooAnimals) o;
+        return zoo.equals(zooAnimals.zoo) &&
+            animal.equals(zooAnimals.animal);
     }
 }

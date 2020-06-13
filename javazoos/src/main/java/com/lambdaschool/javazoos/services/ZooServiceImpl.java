@@ -36,9 +36,10 @@ public class ZooServiceImpl implements ZooService
     }
 
     @Override
-    public Zoo findZooById(long id)
+    public Zoo findZooById(long id) throws EntityNotFoundException
     {
-        return null;
+        return zoorepos.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found!"));
     }
 
     @Override
