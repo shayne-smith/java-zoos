@@ -22,15 +22,15 @@ public class Zoo extends Auditable
     private String zooname;
 
     @OneToMany(mappedBy = "zoo",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties(value = "zoos")
+    private List<Telephone> telephones = new ArrayList<>();
+
+    @OneToMany(mappedBy = "zoo",
         cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "zoos")
     private List<ZooAnimals> animals = new ArrayList<>();
-
-    @OneToMany(mappedBy = "zoo",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
-    @JsonIgnoreProperties(value = "zoos")
-    private List<Telephone> telephones = new ArrayList<>();
 
     public Zoo()
     {
